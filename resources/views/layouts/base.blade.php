@@ -28,6 +28,8 @@
     </head>
 
     <body>
+        @include('partials.navbar')
+        
         @yield('body')
 
         @livewireScripts
