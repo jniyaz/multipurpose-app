@@ -21,7 +21,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'welcome')->name('home');
+Route::view('/', 'pages.welcome')->name('home');
+
+Route::view('/dashboard', 'pages.dashboard')->name('dashboard');
 
 Route::middleware('guest')->group(function () {
     Route::get('login', Login::class)
