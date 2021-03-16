@@ -26,7 +26,8 @@ class ProfileRequest extends FormRequest
         return [
             'name' => 'required|min:4|max:100',
             'phone' => 'required|numeric',
-            'address' => 'sometimes|max:150'
+            'address' => 'sometimes|max:150',
+            'biography' => 'sometimes|max:200'
         ];
     }
 }

@@ -47,8 +47,8 @@ class ProfileController extends Controller
             $user->profile()->create($request->all());
         }
 
-        $user->profile->update($request->only(['phone', 'address', 'website']));
+        $user->profile->update($request->only(['phone', 'address', 'website', 'biography']));
 
-        return redirect()->route('profile.index')->with(['status' => 'Profile saved successfully']);
+        return redirect()->route('profile.index')->with(['type' => 'success', 'message' => 'Profile saved successfully']);
     }
 }
