@@ -12,7 +12,7 @@
                     @auth
                     <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                     <a href="{{ route('dashboard') }}" class="{{ request()->path() == 'dashboard' ? 'bg-gray-900' : ''  }} text-white px-3 py-2 rounded-md text-sm font-medium">Dashboard</a>
-                    <a href="#" class="{{ request()->path() == 'stories' ? 'bg-gray-900' : ''  }} text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Stories</a>
+                    <a href="{{ route('story.index') }}" class="{{ request()->path() == 'story' ? 'bg-gray-900' : ''  }} text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Stories</a>
                     <a href="#" class="{{ request()->path() == 'books' ? 'bg-gray-900' : ''  }} text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Books</a>
                     @else
                     <a href="{{ route('home') }}" class="{{ request()->path() == '/' ? 'bg-gray-900' : ''  }} text-white px-3 py-2 rounded-md text-sm font-medium">Home</a>
@@ -113,7 +113,7 @@
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
             @auth
             <a href="{{ route('dashboard') }}" class="{{ request()->path() == 'dashboard' ? 'bg-gray-900' : ''  }} text-white block px-3 py-2 rounded-md text-base font-medium">Dashboard</a>
-            <a href="#" class="{{ request()->path() == 'stories' ? 'bg-gray-900' : ''  }} text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Stories</a>
+            <a href="{{ route('story.index') }}" class="{{ request()->path() == 'story' ? 'bg-gray-900' : ''  }} text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Stories</a>
             <a href="#" class="{{ request()->path() == 'books' ? 'bg-gray-900' : ''  }} text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Books</a>
             <div class="pt-4 pb-3 border-t border-gray-700">
                 <div class="flex items-center px-5">

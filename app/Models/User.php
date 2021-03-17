@@ -45,4 +45,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(\App\Models\Profile::class);
     }
+
+    public function stories()
+    {
+        return $this->hasMany(\App\Models\Story::class);
+    }
 }

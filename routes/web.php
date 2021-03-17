@@ -4,6 +4,7 @@ use App\Http\Livewire\Auth\Login;
 use App\Http\Livewire\Auth\Verify;
 use App\Http\Livewire\Auth\Register;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StoryController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Livewire\Auth\Passwords\Email;
 use App\Http\Livewire\Auth\Passwords\Reset;
@@ -31,6 +32,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('profile/{user}', [ProfileController::class, 'update'])->name('profile.update');
 
     // Stories
+    Route::resource('story', StoryController::class);
 });
 
 // Auth

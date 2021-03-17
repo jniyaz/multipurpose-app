@@ -40,7 +40,7 @@ class ProfileController extends Controller
      */
     public function update(ProfileRequest $request, User $user)
     {
-        $this->authorize('update', $user->profile);
+        // $this->authorize('update', $user->profile);
 
         $user->name = $request->name;
         $user->save();
