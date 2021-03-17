@@ -11,6 +11,11 @@ class Story extends Model
 
     protected $guarded = [];
 
+    public function getTypeAttribute($value)
+    {
+        return ucfirst($value);
+    }
+
     public function user()
     {
         return $this->belongsTo(\App\Models\User::class);

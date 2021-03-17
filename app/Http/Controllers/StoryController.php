@@ -10,6 +10,11 @@ use Intervention\Image\Facades\Image;
 
 class StoryController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Story::class, 'story');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -67,7 +72,7 @@ class StoryController extends Controller
      */
     public function show(Story $story)
     {
-        //
+        return view('pages.story.show', compact('story'));
     }
 
     /**

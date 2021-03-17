@@ -11,6 +11,11 @@ class Tag extends Model
 
     protected $guarded = [];
 
+    public function getTitleAttribute($value)
+    {
+        return ucfirst($value);
+    }
+
     public function stories()
     {
         return $this->belongsToMany(\App\Models\Story::class);

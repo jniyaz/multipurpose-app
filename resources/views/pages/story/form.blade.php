@@ -29,8 +29,8 @@
         <select id="type" name="type" autocomplete="type" 
         class="mt-2 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
           <option value="">-</option>
-          <option value="short" {{ old('type', $story->type) == 'short' ? 'selected' : '' }}>Short</option>
-          <option value="long" {{ old('type', $story->type) == 'long' ? 'selected' : '' }}>Long</option>
+          <option value="short" {{ old('type', $story->type) == 'Short' ? 'selected' : '' }}>Short</option>
+          <option value="long" {{ old('type', $story->type) == 'Long' ? 'selected' : '' }}>Long</option>
         </select>
         <x-forms.error field="type" />
     </div>
