@@ -5,7 +5,7 @@
     @if(session('message'))
         <x-shared.alert />
     @endif
-    <x-shared.page-title title="Stories" />
+    <x-shared.page-title title="Users" />
     <div class="max-w-7xl mx-auto py-4 sm:px-6 lg:px-8">
       <div class="px-4 py-3 sm:px-0">
         <div class="flex item-center justify-between py-3">
@@ -72,10 +72,10 @@
                                     {{ \Carbon\Carbon::parse($user->created_at)->format('d-m-Y') }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                    {{-- <div class="flex items-center justify-center">
-                                        @can('view', $story)
+                                    <div class="flex items-center justify-center">
+                                        @can('view', \App\Models\Role::class)
                                         <span>
-                                            <a href="{{ route('story.show', [$story]) }}" class="text-indigo-600 hover:text-indigo-900">
+                                            <a href="{{ route('users.show', [$user]) }}" class="text-indigo-600 hover:text-indigo-900">
                                                 <button type="button" class="inline-flex items-center px-3 py-2 border border-gray-300 rounded-md shadow-sm text-xs font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                                     <svg class="-ml-1 h-4 w-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                                                         <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
@@ -85,9 +85,9 @@
                                             </a>
                                         </span>
                                         @endcan
-                                        @can('update', $story)
+                                        @can('view', \App\Models\Role::class)
                                         <span class="ml-2">
-                                            <a href="{{ route('story.edit', [$story]) }}" class="text-indigo-600 hover:text-indigo-900">
+                                            <a href="{{ route('users.edit', [$user]) }}" class="text-indigo-600 hover:text-indigo-900">
                                                 <button type="button" class="inline-flex items-center px-3 py-2 border border-gray-300 rounded-md shadow-sm text-xs font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                                     <svg class="-ml-1 h-4 w-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                                         <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
@@ -96,9 +96,9 @@
                                             </a>
                                         </span>
                                         @endcan
-                                        @can('delete', $story)
+                                        @can('view', \App\Models\Role::class)
                                         <span class="hidden sm:block ml-2">
-                                            <form action="{{ route('story.destroy', [$story]) }}" method="POST">
+                                            <form action="{{ route('users.destroy', [$user]) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" 
@@ -112,7 +112,7 @@
                                             </form>
                                         </span>
                                         @endcan
-                                    </div> --}}
+                                    </div>
                                 </td>
                             </tr>
                         @endforeach        
