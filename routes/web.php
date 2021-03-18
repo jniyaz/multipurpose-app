@@ -2,6 +2,7 @@
 
 use App\Http\Livewire\Auth\Login;
 use App\Http\Livewire\Auth\Verify;
+use App\Http\Middleware\CheckAdmin;
 use App\Http\Livewire\Auth\Register;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StoryController;
@@ -9,8 +10,10 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Livewire\Auth\Passwords\Email;
 use App\Http\Livewire\Auth\Passwords\Reset;
 use App\Http\Livewire\Auth\Passwords\Confirm;
+use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\EmailVerificationController;
+use App\Http\Controllers\Admin\StoryController as AdminStoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +29,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::view('dashboard', 'pages.dashboard')->name('dashboard');
 
     // Profiles
+
     // Route::resource('profile', ProfileController::class);
     Route::get('profile', [ProfileController::class, 'index'])->name('profile.index');
     Route::get('profile/{id}/edit', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -33,6 +37,11 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Stories
     Route::resource('story', StoryController::class);
+});
+
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', CheckAdmin::class]], function () {
+    Route::resource('users', UsersController::class);
+    Route::resource('stories', AdminStoryController::class);
 });
 
 // Auth

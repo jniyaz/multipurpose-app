@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Tag;
 use App\Models\Story;
-use Illuminate\Http\Request;
 use App\Http\Requests\StoryRequest;
 use Intervention\Image\Facades\Image;
 
@@ -22,7 +21,10 @@ class StoryController extends Controller
      */
     public function index()
     {
-        $stories = Story::orderBy('id', 'desc')->paginate(10);
+        $stories = Story::where('user_id', auth()->user()->id)
+            ->orderBy('id', 'desc')
+            ->paginate(10);
+
         return view('pages.story.index', compact('stories'));
     }
 

@@ -56,6 +56,7 @@
                         placeholder="Biography">{{ $user->profile->biography ?? null }}</textarea>
                     </div>
                     
+                    @can('view', \App\Models\Role::class)
                     <div>
                         <x-forms.label field="Roles" />
                         @foreach (\App\Models\Role::get() as $role)
@@ -72,6 +73,7 @@
                             </div>
                         @endforeach
                     </div>
+                    @endcan
                    
                 </div>
 

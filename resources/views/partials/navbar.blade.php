@@ -12,8 +12,10 @@
                     @auth
                     <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                     <a href="{{ route('dashboard') }}" class="{{ request()->path() == 'dashboard' ? 'bg-gray-900' : ''  }} text-white px-3 py-2 rounded-md text-sm font-medium">Dashboard</a>
-                    <a href="{{ route('story.index') }}" class="{{ request()->path() == 'story' ? 'bg-gray-900' : ''  }} text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Stories</a>
-                    <a href="#" class="{{ request()->path() == 'books' ? 'bg-gray-900' : ''  }} text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Books</a>
+                    <a href="{{ route('story.index') }}" class="{{ request()->path() == 'story' ? 'bg-gray-900' : ''  }} text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">My Stories</a>
+                    @can('view', \App\Models\Role::class)
+                    <a href="{{ route('users.index') }}" class="{{ request()->path() == 'users' ? 'bg-gray-900' : ''  }} text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Users</a>
+                    @endcan
                     @else
                     <a href="{{ route('home') }}" class="{{ request()->path() == '/' ? 'bg-gray-900' : ''  }} text-white px-3 py-2 rounded-md text-sm font-medium">Home</a>
                     @endauth
@@ -59,9 +61,13 @@
                         @click.away="isOpen = false" 
                         class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
                                                 
-                        <a href="{{ route('profile.index') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Your Profile</a>
+                        <a href="{{ route('profile.index') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">My Profile</a>
+                        
+                        @can('view', \App\Models\Role::class)
+                        <a href="{{ route('stories.index') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Manage Stories</a>
+                        @endcan
 
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Settings</a>
+                        <a href="{{ route('profile.index') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Settings</a>
                         
                         <a href="{{ route('logout') }}" 
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();" 
