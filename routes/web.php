@@ -23,7 +23,6 @@ use App\Http\Controllers\Admin\StoryController as AdminStoryController;
 
 Route::view('/', 'pages.welcome')->name('home');
 
-
 Route::group(['middleware' => 'auth'], function () {
     // Dashboard
     Route::view('dashboard', 'pages.dashboard')->name('dashboard');
@@ -37,11 +36,14 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Stories
     Route::resource('story', StoryController::class);
-});
 
-Route::group(['prefix' => 'admin', 'middleware' => ['auth', CheckAdmin::class]], function () {
-    Route::resource('users', UsersController::class);
-    Route::resource('stories', AdminStoryController::class);
+    // Admin
+    Route::group(['prefix' => 'admin', 'middleware' => [CheckAdmin::class]], function () {
+        Route::resource('users', UsersController::class);
+        Route::resource('stories', AdminStoryController::class);
+        Route::put('stories/restore/{id}', [AdminStoryController::class, 'restore'])->name('admin.story.restore');
+        Route::delete('stories/delete/{id}', [AdminStoryController::class, 'destroy'])->name('admin.story.destroy');
+    });
 });
 
 // Auth

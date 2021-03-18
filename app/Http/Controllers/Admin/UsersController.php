@@ -48,7 +48,8 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::find($id);
+        return view('pages.admin.users.show', compact('user'));
     }
 
     /**
@@ -59,7 +60,8 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        return view('pages.admin.users.edit', compact('user'));
     }
 
     /**
@@ -71,7 +73,21 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+        $user->name = $request->name;
+        $user->save();
+
+        if (!$user->profile) {
+            $user->profile()->create($request->only(['phone', 'address', 'website', 'biography']));
+        } else {
+            $user->profile->update($request->only(['phone', 'address', 'website', 'biography']));
+        }
+
+        if ($request->roles) {
+            $user->roles()->sync($request->roles);
+        }
+
+        return redirect()->route('users.index')->with(['type' => 'success', 'message' => 'Profile saved successfully']);
     }
 
     /**

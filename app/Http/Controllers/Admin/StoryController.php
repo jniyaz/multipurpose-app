@@ -15,63 +15,20 @@ class StoryController extends Controller
      */
     public function index()
     {
-        $stories = Story::orderBy('id', 'desc')->paginate(10);
-        return view('pages.story.index', compact('stories'));
+        $stories = Story::onlyTrashed()
+            ->with('user')
+            ->orderBy('id', 'DESC')
+            ->paginate(10);
+
+        return view('pages.admin.story.index', compact('stories'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function restore(int $id)
     {
-        //
-    }
+        $story = Story::withTrashed()->findOrFail($id);
+        $story->restore();
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
+        return redirect()->route('stories.index')->with(['type' => 'success', 'message' => 'Story restored successfully']);
     }
 
     /**
@@ -82,6 +39,9 @@ class StoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $story = Story::withTrashed()->findOrFail($id);
+        $story->forceDelete();
+
+        return redirect()->route('stories.index')->with(['type' => 'success', 'message' => 'Story deleted successfully']);
     }
 }

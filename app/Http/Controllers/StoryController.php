@@ -22,6 +22,7 @@ class StoryController extends Controller
     public function index()
     {
         $stories = Story::where('user_id', auth()->user()->id)
+            ->with('user')
             ->orderBy('id', 'desc')
             ->paginate(10);
 

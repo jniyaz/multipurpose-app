@@ -75,7 +75,7 @@
                                     <div class="flex items-center justify-center">
                                         @can('view', \App\Models\Role::class)
                                         <span>
-                                            <a href="{{ route('users.show', [$user]) }}" class="text-indigo-600 hover:text-indigo-900">
+                                            <a href="{{ route('users.show', [$user->id]) }}" class="text-indigo-600 hover:text-indigo-900">
                                                 <button type="button" class="inline-flex items-center px-3 py-2 border border-gray-300 rounded-md shadow-sm text-xs font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                                     <svg class="-ml-1 h-4 w-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                                                         <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
@@ -96,7 +96,7 @@
                                             </a>
                                         </span>
                                         @endcan
-                                        @can('view', \App\Models\Role::class)
+                                        {{-- @can('view', \App\Models\Role::class)
                                         <span class="hidden sm:block ml-2">
                                             <form action="{{ route('users.destroy', [$user]) }}" method="POST">
                                                 @csrf
@@ -111,7 +111,7 @@
                                                 </button>
                                             </form>
                                         </span>
-                                        @endcan
+                                        @endcan --}}
                                     </div>
                                 </td>
                             </tr>
