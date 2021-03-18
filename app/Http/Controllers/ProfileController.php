@@ -51,6 +51,10 @@ class ProfileController extends Controller
             $user->profile->update($request->only(['phone', 'address', 'website', 'biography']));
         }
 
+        if ($request->roles) {
+            $user->roles()->sync($request->roles);
+        }
+
         return redirect()->route('profile.index')->with(['type' => 'success', 'message' => 'Profile saved successfully']);
     }
 }

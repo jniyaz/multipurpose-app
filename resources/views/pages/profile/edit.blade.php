@@ -55,6 +55,23 @@
                         <textarea id="biography" name="biography" rows="3" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border-gray-300 rounded-md" 
                         placeholder="Biography">{{ $user->profile->biography ?? null }}</textarea>
                     </div>
+                    
+                    <div>
+                        <x-forms.label field="Roles" />
+                        @foreach (\App\Models\Role::get() as $role)
+                            <div class="flex items-start">
+                                <div class="flex items-center h-5">
+                                    <input name="roles[]" value="{{ $role->id }}" type="checkbox" 
+                                    {{ in_array($role->id, old('roles', $user->roles->pluck('id')->toArray())) ? 'checked' : '' }}
+                                    class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
+                                    >
+                                </div>
+                                <div class="ml-2 text-sm">
+                                    <label for="roles" class="font-medium text-gray-700">{{ $role->title }}</label>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
                    
                 </div>
 
