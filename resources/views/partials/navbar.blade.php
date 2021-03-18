@@ -3,7 +3,7 @@
         <div class="flex items-center justify-between h-16">
         <div class="flex items-center">
             <div class="flex-shrink-0">
-                <a href="{{ route('home') }}">
+                <a href="@auth {{ route('dashboard') }} @else {{ route('home') }}  @endauth">
                     <x-logo class="w-auto h-8 mx-auto text-indigo-600" />
                 </a>
             </div>
