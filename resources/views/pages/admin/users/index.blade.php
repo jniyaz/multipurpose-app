@@ -8,7 +8,7 @@
     <x-shared.page-title title="Users" />
     <div class="max-w-7xl mx-auto py-4 sm:px-6 lg:px-8">
       <div class="px-4 py-3 sm:px-0">
-        <div class="flex item-center justify-between py-3">
+        {{-- <div class="flex item-center justify-between py-3">
             <div></div>
             <div>
                 <a href="{{ route('users.create') }}">
@@ -19,7 +19,7 @@
                     </button>
                 </a>
             </div>
-        </div>
+        </div> --}}
         <div class="flex flex-col">
             <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">

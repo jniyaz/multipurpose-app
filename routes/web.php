@@ -21,7 +21,14 @@ use App\Http\Controllers\Admin\StoryController as AdminStoryController;
 |--------------------------------------------------------------------------
 */
 
-Route::view('/', 'pages.welcome')->name('home');
+Route::get('/', function () {
+    return view('pages.welcome');
+})->name('home');
+
+Route::get('/p/stories', function () {
+    $stories = \App\Models\Story::get();
+    return view('pages.stories', compact('stories'));
+})->name('main.stories');
 
 Route::group(['middleware' => 'auth'], function () {
     // Dashboard

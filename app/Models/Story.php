@@ -17,6 +17,11 @@ class Story extends Model
         return ucfirst($value);
     }
 
+    public function getCreatedAtAttribute($value)
+    {
+        return \Carbon\Carbon::parse($value)->format('d-m-Y');
+    }
+
     public function user()
     {
         return $this->belongsTo(\App\Models\User::class);
