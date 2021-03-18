@@ -32,7 +32,7 @@ class Login extends Component
             return;
         }
 
-        return redirect()->intended(route('home'));
+        return redirect()->intended(route('dashboard'));
     }
 
     public function render()
