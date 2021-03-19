@@ -31,16 +31,17 @@
                         </div>
                     </div>
                     <div class="flex pt-6 px-4 md:px-8 pb-8 border-t justify-center">
-                        <img class="h-60 object-cover object-center"
-                            src="{{ asset('storage/stories/' . $story->cover_image) }}"
+                        <img class="h-60 object-cover object-center" src="{{ $story->thumbnail }}"
                             alt="{{ $story->cover_image ? Str::slug($story->title, '-') : null }}" />
                     </div>
                     <div class="pt-6 px-4 md:px-8 pb-8 border-t">
-                        <div class="mb-2">
-                            <span class="text-gray-500 bg-gray-200 h-10 rounded px-2 py-1 text-xs select-none">
-                                {{ $story->tags->implode('title', ', ') }}
-                            </span>
-                        </div>
+                        @if (count($story->tags) > 0)
+                            <div class="mb-2">
+                                <span class="text-gray-500 bg-gray-200 h-10 rounded px-2 py-1 text-xs select-none">
+                                    {{ $story->tags->implode('title', ', ') }}
+                                </span>
+                            </div>
+                        @endif
                         <div>{{ $story->description }}</div>
                     </div>
                     <div class="pt-6 px-4 md:px-8 pb-8 border-t">

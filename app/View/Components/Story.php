@@ -25,6 +25,6 @@ class Story extends Component
      */
     public function render()
     {
-        return view('components.stories.hcard');
+        return view('components.stories.card');
     }
 }

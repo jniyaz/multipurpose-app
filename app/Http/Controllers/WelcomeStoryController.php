@@ -14,7 +14,14 @@ class WelcomeStoryController extends Controller
      */
     public function index()
     {
-        $stories = Story::get();
+        $query = Story::where('status', '1');
+
+        // search filters
+        $type = request()->input('type');
+        in_array($type, ['short', 'long']) ? $query->where('type', $type) : null;
+
+        $stories = $query->orderBy('created_at', 'DESC')->paginate(8);
+
         return view('pages.stories', compact('stories'));
     }
 

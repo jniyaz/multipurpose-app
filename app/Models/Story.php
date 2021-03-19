@@ -27,6 +27,11 @@ class Story extends Model
         return \Carbon\Carbon::parse($value)->format('d-m-Y');
     }
 
+    public function getThumbnailAttribute()
+    {
+        return $this->cover_image ? asset('storage/stories/' . $this->cover_image) : asset('storage/stories/default.jpg');
+    }
+
     public function user()
     {
         return $this->belongsTo(\App\Models\User::class);
