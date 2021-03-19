@@ -12,6 +12,11 @@ class Story extends Model
 
     protected $guarded = [];
 
+    public function getTitleAttribute($value)
+    {
+        return ucfirst($value);
+    }
+
     public function getTypeAttribute($value)
     {
         return ucfirst($value);

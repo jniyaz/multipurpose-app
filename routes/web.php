@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\EmailVerificationController;
 use App\Http\Controllers\Admin\StoryController as AdminStoryController;
+use App\Http\Controllers\WelcomeStoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,10 +26,8 @@ Route::get('/', function () {
     return view('pages.welcome');
 })->name('home');
 
-Route::get('/p/stories', function () {
-    $stories = \App\Models\Story::get();
-    return view('pages.stories', compact('stories'));
-})->name('main.stories');
+Route::get('stories', [WelcomeStoryController::class, 'index'])->name('welcome.stories');
+Route::get('stories/{id}', [WelcomeStoryController::class, 'show'])->name('welcome.show.stories');
 
 Route::group(['middleware' => 'auth'], function () {
     // Dashboard

@@ -22,8 +22,8 @@
                         @else
                             <a href="{{ route('home') }}"
                                 class="{{ request()->path() == '/' ? 'bg-gray-900' : '' }} text-white px-3 py-2 rounded-md text-sm font-medium">Home</a>
-                            <a href="{{ route('main.stories') }}"
-                                class="{{ request()->path() == 'p/stories' ? 'bg-gray-900' : '' }} text-white px-3 py-2 rounded-md text-sm font-medium">Stories</a>
+                            <a href="{{ route('welcome.stories') }}"
+                                class="{{ request()->path() == 'stories' ? 'bg-gray-900' : '' }} text-white px-3 py-2 rounded-md text-sm font-medium">Stories</a>
                         @endauth
                     </div>
                 </div>
@@ -57,15 +57,15 @@
                             </div>
 
                             <!--
-                                Dropdown menu, show/hide based on menu state.
+                                                            Dropdown menu, show/hide based on menu state.
 
-                                Entering: "transition ease-out duration-100"
-                                    From: "transform opacity-0 scale-95"
-                                    To: "transform opacity-100 scale-100"
-                                Leaving: "transition ease-in duration-75"
-                                    From: "transform opacity-100 scale-100"
-                                    To: "transform opacity-0 scale-95"
-                                -->
+                                                            Entering: "transition ease-out duration-100"
+                                                                From: "transform opacity-0 scale-95"
+                                                                To: "transform opacity-100 scale-100"
+                                                            Leaving: "transition ease-in duration-75"
+                                                                From: "transform opacity-100 scale-100"
+                                                                To: "transform opacity-0 scale-95"
+                                                            -->
                             <div x-show="isOpen" @click.away="isOpen = false"
                                 class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
                                 role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
@@ -189,6 +189,10 @@
                     </div>
                 </div>
             @else
+                <a href="{{ route('home') }}"
+                    class="{{ request()->path() == '/' ? 'bg-gray-900' : '' }} text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Home</a>
+                <a href="{{ route('welcome.stories') }}"
+                    class="{{ request()->path() == 'stories' ? 'bg-gray-900' : '' }} text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Stories</a>
                 <a href="{{ route('login') }}"
                     class="{{ request()->path() == 'login' ? 'bg-gray-900' : '' }} text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Login</a>
                 <a href="{{ route('register') }}"

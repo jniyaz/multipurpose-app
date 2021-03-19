@@ -1,29 +1,34 @@
-<div
-    class="w-full relative overflow-hidden md:flex mb-4 p-2 bg-white border-b-2 border-r-2 border-gray-200 sm:px-4 sm:py-4 md:px-4 sm:rounded-lg sm:shadow-sm">
-    {{-- <span
-        class="text-gray-700 bg-gray-300 px-3 py-1 font-light text-xs absolute right-0 top-0 rounded-bl capitalize">pending</span> --}}
-    <div class="md:w-1/4"><a href="#">
-            <img class="object-cover rounded-lg h-48 w-48" src="{{ asset('storage/stories/' . $story->cover_image) }}"
-                alt="{{ $story->title }}">
-        </a></div>
-    <div class="md:w-3/4 max-w-full px-4 py-4">
-        @foreach ($story->tags as $tag)
-            <span
-                class="text-blue-500 text-xs rounded-md bg-gray-200 hover:bg-gray-300 px-3 py-1 select-none">{{ $tag->title }}</span>
-        @endforeach
-        <h3 class="font-semibold text-gray-800 my-2 hover:underline text-lg"><a href="#">{{ $story->title }}</a>
-        </h3>
-        <div class="mb-4 w-full text-gray-700 text-sm">{{ Str::limit($story->description, 120) }}</div>
-        <div class="flex items-center justify-between">
-            <div class="text-sm text-gray-800 inline-flex items-center">
-                <span class="mx-1">•</span><span class="text-xs font-light">{{ $story->created_at }}</span>
-                <a href="#" class="hover:underline text-xs font-light ml-1">by {{ $story->user->name }}</a>
-            </div>
-            <div class="text-right">
-                <div class="flex items-center"><a href="#"
-                        class="bg-gray-200 hover:bg-gray-300 rounded-md px-2 py-1 text-blue-600 text-xs uppercase">Read
-                        More </a>
-                </div>
+<div class="p-4 w-full xs:w-1/2 sm:w-1/2 md:w-1/2 lg:w-1/4">
+    <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+        <a href="{{ route('welcome.show.stories', [$story->id]) }}">
+            <img class="lg:h-36 md:h-24 w-full object-cover object-center"
+                src="{{ asset('storage/stories/' . $story->cover_image) }}"
+                alt="{{ $story->cover_image ? Str::slug($story->title, '-') : null }}" />
+        </a>
+        <div class="p-6">
+            <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
+                <span>{{ $story->tags->implode('title', ', ') }}</span>
+            </h2>
+            <h1 class="title-font text-lg font-medium text-gray-900 mb-3">
+                <a href="{{ route('welcome.show.stories', [$story->id]) }}">{{ $story->title }}</a>
+            </h1>
+            <p class="leading-relaxed mb-3">{{ Str::limit($story->description, 24) }}</p>
+            <div class="flex items-center justify-between flex-wrap ">
+                <a href="#" class="inline-flex items-center">
+                    <img alt="blog" src="https://dummyimage.com/103x103"
+                        class="w-8 h-8 rounded-full flex-shrink-0 object-cover object-center">
+                    <span class="flex-grow flex flex-col pl-2">
+                        <span class="text-xs text-gray-500">{{ $story->user->name }}</span>
+                    </span>
+                </a>
+                {{-- <span
+                    class="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1">
+                    <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"
+                        stroke-linejoin="round" viewBox="0 0 24 24">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                    </svg>1.2K
+                </span> --}}
             </div>
         </div>
     </div>
