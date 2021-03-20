@@ -21,8 +21,10 @@ class TagFactory extends Factory
      */
     public function definition()
     {
+        $tag = $this->faker->randomElement(['general', 'science']);
+
         return [
-            'title' => $this->faker->unique()->lexify('???? ????')
+            'title' => $tag
         ];
     }
 }

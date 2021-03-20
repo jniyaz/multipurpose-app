@@ -23,14 +23,16 @@ class StoryFactory extends Factory
     public function definition()
     {
         $type = $this->faker->randomElement(['long', 'short']);
-        $story = ($type == 'short') ? $this->faker->text(100) : $this->faker->paragraph();
+        $description = ($type == 'short') ? $this->faker->text(100) : $this->faker->paragraph();
 
-        return [
+        $story = [
             'user_id' => User::factory(),
             'title' => $this->faker->unique()->lexify('?????? ???? ????'),
-            'description' => $story,
+            'description' => $description,
             'type' => $type,
             'status' => $this->faker->boolean()
         ];
+
+        return $story;
     }
 }
