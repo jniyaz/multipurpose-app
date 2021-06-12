@@ -62,7 +62,7 @@
                                     <div class="flex items-center">
                                         <div class="flex-shrink-0 h-10 w-10">
                                         <img class="h-10 w-10 rounded-full" 
-                                            src="{{ asset('storage/stories/' . $story->cover_image) }}" 
+                                            src="{{ $story->thumbnail }}" 
                                             alt="{{  $story->cover_image ? Str::slug($story->title, '-') : null }}" 
                                         />
                                         </div>

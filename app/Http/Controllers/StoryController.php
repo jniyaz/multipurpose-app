@@ -137,7 +137,7 @@ class StoryController extends Controller
             $location = public_path('storage/stories/' . $filename);
 
             if (!file_exists(public_path('storage/stories'))) {
-                mkdir(public_path('storage/stories'), 666, true);
+                mkdir(public_path('storage/stories'), 0755, true);
             }
 
             Image::make($image)->resize(300, 300)->save($location);

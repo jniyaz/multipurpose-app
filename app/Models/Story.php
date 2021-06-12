@@ -29,7 +29,7 @@ class Story extends Model
 
     public function getThumbnailAttribute()
     {
-        return $this->cover_image ? asset('storage/stories/' . $this->cover_image) : asset('storage/stories/default.jpg');
+        return $this->cover_image ? asset('storage/stories/' . $this->cover_image) : 'https://via.placeholder.com/350x150';
     }
 
     public function user()
