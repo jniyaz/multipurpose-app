@@ -1,20 +1,21 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\WelcomeStoryController;
+use App\Http\Controllers\Auth\JwtAuthController;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
+/*** API Routes */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(['prefix' => 'v1'], function () {
+    // Jwt Authentication
+    Route::post('register', [JwtAuthController::class, 'register'])->name('api.jwt.register');
+    Route::post('login', [JwtAuthController::class, 'login'])->name('api.jwt.login');
+
+    Route::group(['middleware' => 'auth:api'], function(){
+        Route::get('user', [JwtAuthController::class, 'me'])->name('api.jwt.user');
+        Route::get('refresh', [JwtAuthController::class, 'refresh'])->name('api.jwt.refresh');
+        Route::get('logout', [JwtAuthController::class, 'logout'])->name('api.jwt.logout');
+    });
+
+    //
+
 });
