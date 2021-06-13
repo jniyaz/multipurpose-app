@@ -48,7 +48,7 @@ class JwtAuthController extends Controller
     {
         $credentials = request(['email', 'password']);
 
-        if (!$token = Auth::attempt($credentials)) {
+        if (!$token = auth('api')->attempt($credentials)) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
 
@@ -62,7 +62,7 @@ class JwtAuthController extends Controller
      */
     public function me()
     {
-        return response()->json(Auth::user());
+        return response()->json(auth('api')->user());
     }
 
     /**
@@ -72,7 +72,7 @@ class JwtAuthController extends Controller
      */
     public function logout()
     {
-        Auth::logout();
+        auth('api')->logout();
 
         return response()->json(['message' => 'Successfully logged out']);
     }
@@ -84,7 +84,7 @@ class JwtAuthController extends Controller
      */
     public function refresh()
     {
-        return $this->respondWithToken(Auth::refresh());
+        return $this->respondWithToken(auth('api')->refresh());
     }
 
     /**
@@ -99,7 +99,7 @@ class JwtAuthController extends Controller
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => Auth::factory()->getTTL() * 60
+            'expires_in' => auth('api')->factory()->getTTL() * 60
         ]);
     }
 }
