@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\Api\TaskController;
 use App\Http\Controllers\Api\ProjectController;
 use App\Http\Controllers\Auth\JwtAuthController;
 
@@ -27,6 +28,9 @@ Route::group(['prefix' => 'v1'], function () {
 
         // Projects
         Route::resource('projects', ProjectController::class);
+
+        // Tasks
+        Route::resource('tasks', TaskController::class);
 
     });
 });

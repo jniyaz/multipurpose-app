@@ -19,11 +19,11 @@ class ProjectController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return array
      */
     public function index()
     {
-        $projects = Project::get();
+        $projects = Project::where('user_id', auth()->user()->id)->get();
         return new ProjectCollection($projects);
     }
 
@@ -31,7 +31,7 @@ class ProjectController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return array
      */
     public function store(ProjectRequest $request)
     {
@@ -43,7 +43,7 @@ class ProjectController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\Project  $project
-     * @return \Illuminate\Http\Response
+     * @return array
      */
     public function show(Project $project)
     {
@@ -55,7 +55,7 @@ class ProjectController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Project  $project
-     * @return \Illuminate\Http\Response
+     * @return array
      */
     public function update(ProjectRequest $request, Project $project)
     {
@@ -67,7 +67,7 @@ class ProjectController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Project  $project
-     * @return \Illuminate\Http\Response
+     * @return array
      */
     public function destroy(Project $project)
     {
