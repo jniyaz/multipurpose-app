@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\FilesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Api\TaskController;
@@ -28,6 +29,7 @@ Route::group(['prefix' => 'v1'], function () {
 
         // Projects
         Route::resource('projects', ProjectController::class);
+        Route::post('projects/file-upload', [FilesController::class, 'store']);
 
         // Tasks
         Route::resource('tasks', TaskController::class);

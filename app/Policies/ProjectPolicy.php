@@ -68,27 +68,8 @@ class ProjectPolicy
         return true;
     }
 
-    /**
-     * Determine whether the user can restore the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Project  $project
-     * @return mixed
-     */
-    public function restore(User $user, Project $project)
+    public function upload(User $user, Project $project)
     {
-        //
-    }
-
-    /**
-     * Determine whether the user can permanently delete the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Project  $project
-     * @return mixed
-     */
-    public function forceDelete(User $user, Project $project)
-    {
-        //
+        return $user->id === $project->user_id;
     }
 }

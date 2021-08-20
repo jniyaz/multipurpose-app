@@ -20,4 +20,9 @@ class Project extends Model
     {
         return $this->hasMany(\App\Models\Task::class);
     }
+
+    public function files()
+    {
+        return $this->hasMany(\App\Models\File::class);
+    }
 }
