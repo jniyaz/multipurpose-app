@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\JwtAuthController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\Api\ProjectController;
+use App\Http\Controllers\Auth\JwtAuthController;
 
 /*** API Routes */
 
@@ -23,6 +24,9 @@ Route::group(['prefix' => 'v1'], function () {
         Route::post('contacts', [ContactController::class, 'store'])->name('api.contacts.store');
         Route::put('contacts/{id}', [ContactController::class, 'update'])->name('api.contacts.update');
         Route::delete('contacts/{id}', [ContactController::class, 'destroy'])->name('api.contacts.delete');
+
+        // Projects
+        Route::resource('projects', ProjectController::class);
 
     });
 });
