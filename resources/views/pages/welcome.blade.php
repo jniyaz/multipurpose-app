@@ -23,6 +23,11 @@
                                     class="py-2 px-4 md:py-4 md:px-6 border select-none hover:bg-gray-100 bg-white rounded shadow-lg text-indigo-800">
                                     Get Started <span>&rarr;</span> </a>
                             </div>
+                            {{-- global helpers usage --}}
+                            {{-- <div class="mb-6 mt-12">
+                                {{ change_date_format('2021-05-30', 'd-m-Y') }} <br/>
+                                {{ seconds_to_hours('3600') }}
+                            </div> --}}
                         </div>
                     </div>
                 </div>
