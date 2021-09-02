@@ -14,7 +14,7 @@ Route::group(['prefix' => 'v1'], function () {
     Route::post('register', [JwtAuthController::class, 'register'])->name('api.jwt.register');
     Route::post('login', [JwtAuthController::class, 'login'])->name('api.jwt.login');
 
-    Route::group(['middleware' => 'auth:api'], function(){
+    Route::group(['middleware' => 'auth:api'], function () {
         // Auth
         Route::get('user', [JwtAuthController::class, 'me'])->name('api.jwt.user');
         Route::get('refresh', [JwtAuthController::class, 'refresh'])->name('api.jwt.refresh');
@@ -33,6 +33,5 @@ Route::group(['prefix' => 'v1'], function () {
 
         // Tasks
         Route::resource('tasks', TaskController::class);
-
     });
 });

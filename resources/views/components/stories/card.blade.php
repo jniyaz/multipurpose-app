@@ -1,4 +1,4 @@
-<div class="p-4 w-full xs:w-1/2 sm:w-1/2 md:w-1/2 lg:w-1/4">
+<div class="p-4 w-full md:w-1/3">
     <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
         <a href="{{ route('welcome.show.stories', [$story->id]) }}">
             <img class="lg:h-36 md:h-24 w-full object-cover object-center" src="{{ $story->thumbnail }}"
