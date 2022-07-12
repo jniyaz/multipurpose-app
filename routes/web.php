@@ -30,28 +30,32 @@ Route::get('/', function () {
 Route::get('stories', [WelcomeStoryController::class, 'index'])->name('welcome.stories');
 Route::get('stories/{id}', [WelcomeStoryController::class, 'show'])->name('welcome.show.stories');
 
-Route::group(['middleware' => 'auth'], function () {
-    // Dashboard
-    Route::view('dashboard', 'pages.dashboard')->name('dashboard');
+/**
+ * Added - Filament (v1) TALL stack admin panel
+ * to access - /admin/login
+**/
+// Route::group(['middleware' => 'auth'], function () {
+//     // Dashboard
+//     Route::view('dashboard', 'pages.dashboard')->name('dashboard');
 
-    // Profiles
+//     // Profiles
 
-    // Route::resource('profile', ProfileController::class);
-    Route::get('profile', [ProfileController::class, 'index'])->name('profile.index');
-    Route::get('profile/{id}/edit', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::put('profile/{user}', [ProfileController::class, 'update'])->name('profile.update');
+//     // Route::resource('profile', ProfileController::class);
+//     Route::get('profile', [ProfileController::class, 'index'])->name('profile.index');
+//     Route::get('profile/{id}/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+//     Route::put('profile/{user}', [ProfileController::class, 'update'])->name('profile.update');
 
-    // Stories
-    Route::resource('story', StoryController::class);
+//     // Stories
+//     Route::resource('story', StoryController::class);
 
-    // Admin
-    Route::group(['prefix' => 'admin', 'middleware' => [CheckAdmin::class]], function () {
-        Route::resource('users', UsersController::class);
-        Route::resource('stories', AdminStoryController::class);
-        Route::put('stories/restore/{id}', [AdminStoryController::class, 'restore'])->name('admin.story.restore');
-        Route::delete('stories/delete/{id}', [AdminStoryController::class, 'destroy'])->name('admin.story.destroy');
-    });
-});
+//     // Admin
+//     Route::group(['prefix' => 'admin', 'middleware' => [CheckAdmin::class]], function () {
+//         Route::resource('users', UsersController::class);
+//         Route::resource('stories', AdminStoryController::class);
+//         Route::put('stories/restore/{id}', [AdminStoryController::class, 'restore'])->name('admin.story.restore');
+//         Route::delete('stories/delete/{id}', [AdminStoryController::class, 'destroy'])->name('admin.story.destroy');
+//     });
+// });
 
 // Auth
 Route::middleware('guest')->group(function () {

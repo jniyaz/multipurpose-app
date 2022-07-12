@@ -1,8 +1,11 @@
 <div class="p-4 w-full md:w-1/3">
     <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
         <a href="{{ route('welcome.show.stories', [$story->id]) }}">
-            <img class="lg:h-36 md:h-24 w-full object-cover object-center" src="{{ $story->thumbnail }}"
-                alt="{{ $story->cover_image ? Str::slug($story->title, '-') : null }}" />
+            <img
+                class="lg:h-36 md:h-24 w-full object-cover object-center"
+                src="{{ $story->thumbnail }}"
+                alt="{{ $story->cover_image ? Str::slug($story->title, '-') : null }}"
+            />
         </a>
         <div class="p-6">
             <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
