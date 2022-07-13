@@ -23,6 +23,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\PostResource\RelationManagers;
 use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
+use App\Filament\Resources\PostResource\RelationManagers\TagsRelationManager;
 
 class PostResource extends Resource
 {
@@ -72,7 +73,7 @@ class PostResource extends Resource
     public static function getRelations(): array
     {
         return [
-
+            TagsRelationManager::class
         ];
     }
 

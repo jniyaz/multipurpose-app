@@ -30,7 +30,7 @@ class PostsRelationManager extends RelationManager
     {
         return $form
             ->schema([
-                Select::make('category_id')->relationship('category', 'name'),
+                // Select::make('category_id')->relationship('category', 'name'),
                 TextInput::make('title')
                     ->required()
                     ->reactive()
@@ -50,7 +50,7 @@ class PostsRelationManager extends RelationManager
             ->columns([
                 TextColumn::make('id')->sortable(),
                 TextColumn::make('title')->limit('50')->sortable(),
-                TextColumn::make('slug')->limit('50'),
+                // TextColumn::make('slug')->limit('50'),
                 BooleanColumn::make('is_published'),
                 // SpatieMediaLibraryImageColumn::make('thumbnail')->collection('posts'),
             ])
