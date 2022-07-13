@@ -16,8 +16,10 @@ use Filament\Forms\Components\Textarea;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\RichEditor;
+use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
 use Filament\Tables\Columns\BooleanColumn;
+use Filament\Tables\Filters\TernaryFilter;
 use App\Filament\Resources\PostResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\PostResource\RelationManagers;
@@ -42,7 +44,9 @@ class PostResource extends Resource
                     ->afterStateUpdated(function (Closure $set, $state) {
                         $set('slug', Str::slug($state));
                     }),
-                TextInput::make('slug')->required()->disabled(),
+                TextInput::make('slug')
+                    ->required()
+                    ->disabled(),
                 RichEditor::make('content'),
                 SpatieMediaLibraryFileUpload::make('thumbnail')->collection('posts'),
                 Toggle::make('is_published')
@@ -54,13 +58,15 @@ class PostResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('id')->sortable(),
-                TextColumn::make('title')->limit('50')->sortable(),
-                TextColumn::make('slug')->limit('50'),
-                BooleanColumn::make('is_published'),
+                TextColumn::make('category.name'),
+                TextColumn::make('title')->limit('50')->sortable()->searchable(),
+                // TextColumn::make('slug')->limit('50'),
+                BooleanColumn::make('is_published')->label('Published'),
                 SpatieMediaLibraryImageColumn::make('thumbnail')->collection('posts'),
             ])
             ->filters([
-                //
+                TernaryFilter::make('Published')->column('is_published'),
+                SelectFilter::make('category')->relationship('category', 'name')
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
