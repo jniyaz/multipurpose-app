@@ -8,8 +8,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 use Tymon\JWTAuth\Contracts\JWTSubject;
+use Filament\Models\Contracts\FilamentUser;
 
-class User extends Authenticatable implements JWTSubject
+class User extends Authenticatable implements JWTSubject, FilamentUser
 {
     use HasFactory, Notifiable;
 
@@ -42,6 +43,12 @@ class User extends Authenticatable implements JWTSubject
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /** Filament - admin */
+    public function canAccessFilament(): bool
+    {
+        return str_ends_with($this->email, '@admin.com');
+    }
 
     /**
      * Get the identifier that will be stored in the subject claim of the JWT.

@@ -10,7 +10,8 @@
     "require": {
         "php": "^7.3|^8.0",
         "fideloper/proxy": "^4.4",
-        "filament/filament": "^1.13",
+        "filament/filament": "^2.13",
+        "filament/spatie-laravel-media-library-plugin": "^2.0",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "intervention/image": "^2.5",
@@ -53,6 +54,9 @@
             "Tests\\": "tests/"
         }
     },
+    "post-update-cmd": [
+        "@php artisan filament:upgrade"
+    ],
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
