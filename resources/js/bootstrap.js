@@ -1,4 +1,4 @@
-import 'alpinejs';
+// import Alpine from 'alpinejs'
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening

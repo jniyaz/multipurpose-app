@@ -55,7 +55,9 @@
         }
     },
     "post-update-cmd": [
-        "@php artisan filament:upgrade"
+        "@php artisan filament:upgrade",
+        "@php artisan config:clear",
+        "@php artisan view:clear"
     ],
     "minimum-stability": "dev",
     "prefer-stable": true,

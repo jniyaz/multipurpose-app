@@ -10,16 +10,17 @@
         "production": "mix --production"
     },
     "devDependencies": {
-        "@tailwindcss/forms": "^0.2",
-        "@tailwindcss/typography": "^0.3",
-        "alpinejs": "^2.8",
+        "@alpinejs/focus": "^3.10.2",
+        "@tailwindcss/forms": "^0.5.2",
+        "@tailwindcss/typography": "^0.5.4",
+        "alpinejs": "^3.10.2",
         "laravel-mix": "^6.0.6",
         "laravel-mix-tailwind": "^0.1",
         "postcss": "^8.1.14",
         "resolve-url-loader": "^3.1",
         "sass": "^1.32",
         "sass-loader": "^8.0",
-        "tailwindcss": "^2.0"
+        "tailwindcss": "^3.1.6"
     },
     "dependencies": {
         "animate.css": "^4.1.1",
